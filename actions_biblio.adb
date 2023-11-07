@@ -1,3 +1,5 @@
+with actions_biblio;
+
 package body actions_biblio is
 
 	function Nb_Livres_Disponibles(b: in Type_Biblio) return Integer is
@@ -21,4 +23,19 @@ package body actions_biblio is
 			i := i + 1;
 		end loop;
 	end Afficher_Livres_Dispo;
+	
+	function Livre_Avec_La_Plus_Grande_Note_Moyenne(b: in Type_Biblio) return Type_Livre is
+		i: Integer := 1;
+		livrePlusHauteNote: Type_Livre;
+	begin
+		if b.nb_Livres > 0 then 
+			livrePlusHauteNote := b.livres(1);
+		else
+			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
+		end if;
+		while i <= b.nb_Livres loop
+			livrePlusHauteNote := (if Calculer_Note_Moyenne(livrePlusHauteNote) < Calculer_Note_Moyenne(b.livres(i)) then b.livres(i) else livrePlusHauteNote);
+		end loop;
+		return livrePlusHauteNote;
+	end Livre_Avec_La_Plus_Grande_Note_Moyenne;
 end actions_biblio;
