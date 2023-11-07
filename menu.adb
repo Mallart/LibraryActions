@@ -31,7 +31,6 @@ procedure menu is
 		Put_Line("11 - Changer la disponibilite d’un livre");
 		Put_Line("12 - Affiche ce message");
 		Put_Line("autre - Sortir du programme");
-		Put_Line("Entrer une commande: ");
 	end Help_Message;
 
 	command: Integer;
@@ -43,11 +42,13 @@ procedure menu is
 begin
 	Help_Message;
 	loop
+		Put_Line("Entrez une commande: ");
 		Get(command);
 		New_Line;
 		case command is
 			when 0 =>
 				Remplir_Biblio(biblio);
+				Put_Line("finito");
 			when 1 =>
 				Afficher_Biblio(biblio);
 			when 2 =>
@@ -84,6 +85,7 @@ begin
 				Help_Message;
 			when others =>
 				exit;
+			exit;
 		end case;
 	end loop;
 	Put_Line("Au revoir bebou"); -- ENLEVER CETTE MERDE

@@ -2,18 +2,19 @@ package body biblio is
 
     procedure remplir_biblio (b : out Type_Biblio) is
       reponse : Character;
+	  continuer: Boolean := true;
    begin
       b.nb_livres := 1;
       Put_line ("                                                                        ");
-      Put("Voulez vous introduir un livre ? ");
+      Put("Voulez vous introduire un livre ? ");
       Get(reponse);
-      while (reponse = 'O' or reponse = 'o') and  b.nb_livres <=  NB_MAX loop
+      while continuer and  b.nb_livres <=  NB_MAX loop
          lire_livre(b.livres(b.nb_livres));
+         b.nb_livres :=  b.nb_livres + 1;
          Put("Voulez vous introduir un nouveau livre ? ");
          Get(reponse);
-          b.nb_livres :=  b.nb_livres + 1;
+		 continuer := (if reponse = 'O' or reponse = 'o' then true else false);
       end loop;
-       b.nb_livres :=   b.nb_livres - 1;
    end remplir_biblio;
 
 

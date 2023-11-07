@@ -9,7 +9,7 @@ package biblio is
    type tab_Livres is array (1.. NB_MAX) of Type_Livre;
 
    type Type_Biblio is record
-      nb_livres : Integer ;
+      nb_livres : Integer := 0;
       livres : tab_Livres;
    end record;
 

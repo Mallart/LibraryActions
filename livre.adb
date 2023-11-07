@@ -69,11 +69,11 @@ package body livre is
 
       New_Line;
 
-      Put ("il a été déjà noté pour");
+      Put ("il a ete deja note par");
       Put (l.nbPrets);
       Put (" personnes ");
 
-      Put ("et sa note moyenne est égale à");
+      Put ("et sa note moyenne est egale a");
       Put (l.sumNote/Float(l.nbPrets));
       New_Line;
       Put_line ("                                                                        ");
