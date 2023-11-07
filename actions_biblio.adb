@@ -76,6 +76,7 @@ package body actions_biblio is
 			if b.livres(i) = l then
 				l.pret := not l.pret;
 			end if;
+			i := i + 1;
 		end loop;
 	end Changer_Disponibilite;
 end actions_biblio;
