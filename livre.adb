@@ -26,7 +26,7 @@ package body livre is
          l.pret := true;
       end if;
 
-      Put("Introduire la somme de toutes les notes reçues par le livre : ");
+      Put("Introduire la somme de toutes les notes recues par le livre : ");
       Get (l.sumNote);
       while l.sumNote < 0.0 loop
          Put_line("La valeur saisie n'est pas valide ");
