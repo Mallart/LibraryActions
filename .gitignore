@@ -6,3 +6,6 @@
 
 # Executable File
 *.exe
+
+# Compressed File
+*.zip
