@@ -66,17 +66,15 @@ package body actions_biblio is
 	end Ajouter_Note;
 	
 	procedure Changer_Disponibilite(b: in Type_Biblio; l: out Type_Livre) is
-		i: Integer := 1;
-		
+		index: Integer;
+		livre_trouve: Boolean;
 	begin
 		if b.nb_Livres < 1 then 	
 			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
 		end if;
-		while i <= b.nb_Livres loop
-			if b.livres(i) = l then
-				l.pret := not l.pret;
-			end if;
-			i := i + 1;
-		end loop;
+		Trouver_Livre(b, l, index, livre_trouve);
+		if livre_trouve then
+			l.pret := not l.pret;			
+		end if;
 	end Changer_Disponibilite;
 end actions_biblio;
