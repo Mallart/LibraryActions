@@ -28,7 +28,7 @@ package body actions_biblio is
 		i: Integer := 1;
 		livrePlusHauteNote: Type_Livre;
 	begin
-		if b.nb_Livres < 1 then 
+		if b.nb_Livres > 1 then 
 			livrePlusHauteNote := b.livres(1);
 		else
 			New_Line;
@@ -46,7 +46,7 @@ package body actions_biblio is
 		i: Integer := 1;
 		livrePlusPrete: Type_Livre;
 	begin
-		if b.nb_Livres < 1 then 
+		if b.nb_Livres > 1 then 
 			livrePlusPrete := b.livres(1);
 		else
 			New_Line;
