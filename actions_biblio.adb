@@ -60,5 +60,9 @@ package body actions_biblio is
 		return livrePlusPrete;
 	end Livre_Moins_Prete;
 	
-	
+	procedure Ajouter_Note(l: out Type_Livre; note: in Float) is
+	begin
+		l.sumNote := l.sumNote + note;
+		l.nbPrets := l.nbPrets + 1;
+	end Ajouter_Note;
 end actions_biblio;

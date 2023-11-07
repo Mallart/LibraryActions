@@ -1,3 +1,5 @@
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with livre; use livre;
 with biblio; use biblio;
 
@@ -13,4 +15,6 @@ package actions_biblio is
 	function Livre_Avec_La_Plus_Grande_Note_Moyenne(b: in Type_Biblio) return Type_Livre;
 	-- Retourne le livre le moins prete de la bibliotheque
 	function Livre_Moins_Prete(b: in Type_Biblio) return Type_Livre;
+	--
+	procedure Ajouter_Note(l: out Type_Livre; note: in Float);
 end actions_biblio;
