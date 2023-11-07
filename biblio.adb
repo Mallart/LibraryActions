@@ -28,7 +28,7 @@ package body biblio is
       Put_line  ("################################################");
 
       i:=1;
-       while i <= b.nb_livres loop
+       while i < b.nb_livres loop
          afficher_livre(b.livres(i));
          i := i + 1;
       end loop;
@@ -41,7 +41,7 @@ package body biblio is
       trouve:= false;
       rang:=-1;
       i:=1;
-      while i <= b.nb_livres and not trouve loop
+      while i < b.nb_livres and not trouve loop
          -- test si la voiture correspond à la voiture recherchee
          if b.livres(i) = l then
             trouve := true;
