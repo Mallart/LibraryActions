@@ -31,6 +31,8 @@ package body actions_biblio is
 		if b.nb_Livres < 1 then 
 			livrePlusHauteNote := b.livres(1);
 		else
+			New_Line;
+			Put(b.nb_Livres);
 			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
 		end if;
 		while i <= b.nb_Livres loop
@@ -47,6 +49,8 @@ package body actions_biblio is
 		if b.nb_Livres < 1 then 
 			livrePlusPrete := b.livres(1);
 		else
+			New_Line;
+			Put(b.nb_Livres);		
 			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
 		end if;
 		while i <= b.nb_Livres loop
@@ -55,4 +59,6 @@ package body actions_biblio is
 		end loop;
 		return livrePlusPrete;
 	end Livre_Moins_Prete;
+	
+	
 end actions_biblio;
