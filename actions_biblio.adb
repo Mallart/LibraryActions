@@ -28,14 +28,30 @@ package body actions_biblio is
 		i: Integer := 1;
 		livrePlusHauteNote: Type_Livre;
 	begin
-		if b.nb_Livres > 0 then 
+		if b.nb_Livres < 1 then 
 			livrePlusHauteNote := b.livres(1);
 		else
 			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
 		end if;
 		while i <= b.nb_Livres loop
 			livrePlusHauteNote := (if Calculer_Note_Moyenne(livrePlusHauteNote) < Calculer_Note_Moyenne(b.livres(i)) then b.livres(i) else livrePlusHauteNote);
+			i := i + 1;
 		end loop;
 		return livrePlusHauteNote;
 	end Livre_Avec_La_Plus_Grande_Note_Moyenne;
+	
+	function Livre_Moins_Prete(b: in Type_Biblio) return Type_Livre is
+		i: Integer := 1;
+	begin
+		if b.nb_Livres < 1 then 
+			livrePlusHauteNote := b.livres(1);
+		else
+			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
+		end if;
+		while i <= b.nb_Livres loop
+			livrePlusHauteNote := (if Calculer_Note_Moyenne(livrePlusHauteNote) < Calculer_Note_Moyenne(b.livres(i)) then b.livres(i) else livrePlusHauteNote);
+			i := i + 1;
+		end loop;
+		return livrePlusHauteNote;
+	end Livre_Moins_Prete;
 end actions_biblio;

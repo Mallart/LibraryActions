@@ -11,4 +11,6 @@ package actions_biblio is
 	procedure Afficher_Livres_Dispo(b: in Type_Biblio);
 	-- Retourne le livre qui a la plus grande note moyenne
 	function Livre_Avec_La_Plus_Grande_Note_Moyenne(b: in Type_Biblio) return Type_Livre;
+	-- Retourne le livre le moins prete de la bibliotheque
+	function Livre_Moins_Prete(b: in Type_Biblio) return Type_Livre;
 end actions_biblio;
