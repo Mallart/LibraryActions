@@ -6,6 +6,9 @@ package body actions_biblio is
 		i: Integer := 1;
 		nbPret: Integer := 0;
 	begin
+		if b.nb_Livres < 1 then
+			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
+		end if;
 		while i <= b.nb_Livres loop
 			nbPret := (if Est_En_Pret(b.livres(i)) then nbPret + 1 else nbPret);
 			i := i + 1;
@@ -31,8 +34,6 @@ package body actions_biblio is
 		if b.nb_Livres > 0 then 
 			livrePlusHauteNote := b.livres(1);
 		else
-			New_Line;
-			Put(b.nb_Livres);
 			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
 		end if;
 		while i <= b.nb_Livres loop
@@ -48,9 +49,7 @@ package body actions_biblio is
 	begin
 		if b.nb_Livres > 0 then 
 			livreMoinsPrete := b.livres(1);
-		else
-			New_Line;
-			Put(b.nb_Livres);		
+		else	
 			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
 		end if;
 		while i <= b.nb_Livres loop
@@ -65,4 +64,18 @@ package body actions_biblio is
 		l.sumNote := l.sumNote + note;
 		l.nbPrets := l.nbPrets + 1;
 	end Ajouter_Note;
+	
+	procedure Changer_Disponibilite(b: in Type_Biblio; l: out Type_Livre) is
+		i: Integer := 1;
+		
+	begin
+		if b.nb_Livres < 1 then 	
+			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
+		end if;
+		while i <= b.nb_Livres loop
+			if b.livres(i) = l then
+				l.pret := not l.pret;
+			end if;
+		end loop;
+	end Changer_Disponibilite;
 end actions_biblio;

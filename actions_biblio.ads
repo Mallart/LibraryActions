@@ -17,4 +17,6 @@ package actions_biblio is
 	function Livre_Moins_Prete(b: in Type_Biblio) return Type_Livre;
 	--
 	procedure Ajouter_Note(l: out Type_Livre; note: in Float);
+	--
+	procedure Changer_Disponibilite(b: in Type_Biblio; l: out Type_Livre);
 end actions_biblio;
