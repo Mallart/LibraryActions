@@ -28,7 +28,7 @@ package body actions_biblio is
 		i: Integer := 1;
 		livrePlusHauteNote: Type_Livre;
 	begin
-		if b.nb_Livres > 1 then 
+		if b.nb_Livres > 0 then 
 			livrePlusHauteNote := b.livres(1);
 		else
 			New_Line;
@@ -44,20 +44,20 @@ package body actions_biblio is
 	
 	function Livre_Moins_Prete(b: in Type_Biblio) return Type_Livre is
 		i: Integer := 1;
-		livrePlusPrete: Type_Livre;
+		livreMoinsPrete: Type_Livre;
 	begin
-		if b.nb_Livres > 1 then 
-			livrePlusPrete := b.livres(1);
+		if b.nb_Livres > 0 then 
+			livreMoinsPrete := b.livres(1);
 		else
 			New_Line;
 			Put(b.nb_Livres);		
 			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
 		end if;
 		while i <= b.nb_Livres loop
-			livrePlusPrete := (if Obtenir_nbPrets(livrePlusPrete) < Obtenir_nbPrets(b.livres(i)) then b.livres(i) else livrePlusPrete);
+			livreMoinsPrete := (if Obtenir_nbPrets(livreMoinsPrete) > Obtenir_nbPrets(b.livres(i)) then b.livres(i) else livreMoinsPrete);
 			i := i + 1;
 		end loop;
-		return livrePlusPrete;
+		return livreMoinsPrete;
 	end Livre_Moins_Prete;
 	
 	procedure Ajouter_Note(l: out Type_Livre; note: in Float) is
