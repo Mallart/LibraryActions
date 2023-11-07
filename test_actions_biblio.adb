@@ -63,7 +63,6 @@ begin
 		Put_line("Le programme est ok");
 	else
 		Put_Line("le programme est ko");
-		Afficher_Livre(Livre_Avec_La_Plus_Grande_Note_Moyenne(b1));
 	end if;
 	
 	
