@@ -42,16 +42,17 @@ package body actions_biblio is
 	
 	function Livre_Moins_Prete(b: in Type_Biblio) return Type_Livre is
 		i: Integer := 1;
+		livrePlusPrete: Type_Livre;
 	begin
 		if b.nb_Livres < 1 then 
-			livrePlusHauteNote := b.livres(1);
+			livrePlusPrete := b.livres(1);
 		else
 			raise NOT_ENOUGH_BOOKS_IN_LIBRARY;
 		end if;
 		while i <= b.nb_Livres loop
-			livrePlusHauteNote := (if Calculer_Note_Moyenne(livrePlusHauteNote) < Calculer_Note_Moyenne(b.livres(i)) then b.livres(i) else livrePlusHauteNote);
+			livrePlusPrete := (if Obtenir_nbPrets(livrePlusPrete) < Obtenir_nbPrets(b.livres(i)) then b.livres(i) else livrePlusPrete);
 			i := i + 1;
 		end loop;
-		return livrePlusHauteNote;
+		return livrePlusPrete;
 	end Livre_Moins_Prete;
 end actions_biblio;
